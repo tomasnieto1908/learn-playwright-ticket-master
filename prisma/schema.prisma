@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Recitales {
+  id                 Int                @id @default(autoincrement())
+  ubicacion          String
+  descripcion        String
+  createdAt          DateTime           @default(now())
+  fechaYHora         DateTime
+  precioDeEntrada    Float
+  entradasVendidas   EntradasVendidas[]
+  cantidadDisponible Int
+  genero             String
+}
+
+model EntradasVendidas {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  recitalId Int
+  recital   Recitales @relation(fields: [recitalId], references: [id])
+  cantidad  Int
+}
+
