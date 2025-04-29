@@ -1,0 +1,20 @@
+const db = require('./db');
+
+// Cargar algunos eventos de prueba
+const events = [
+  { name: 'Concierto de Rock', available_tickets: 100 },
+  { name: 'Teatro Musical', available_tickets: 50 },
+  { name: 'Festival de Jazz', available_tickets: 200 }
+];
+
+// Insertar los eventos en la base de datos
+const stmt = db.prepare('INSERT INTO events (name, available_tickets) VALUES (?, ?)');
+
+events.forEach(event => {
+  stmt.run(event.name, event.available_tickets);
+});
+
+stmt.finalize(() => {
+  console.log('Datos de prueba insertados');
+  db.close();
+});
