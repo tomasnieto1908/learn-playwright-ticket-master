@@ -9,9 +9,9 @@
     "lint": "next lint",
     "tests": "npx playwright test",
     "prisma:generate": "npx prisma generate",
-  "prisma:migrate": "npx prisma migrate dev",
-  "prisma:db:create": "npx prisma db push",
-  "prisma:studio": "npx prisma studio"
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:db:create": "npx prisma db push",
+    "prisma:studio": "npx prisma studio"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -75,5 +75,4 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
-  
 }
