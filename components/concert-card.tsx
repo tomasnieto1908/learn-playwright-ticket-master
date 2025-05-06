@@ -5,34 +5,34 @@ import { Calendar, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { formatDate } from "@/lib/utils"
-import type { Concert } from "@/lib/types"
+import { Recitales } from "@prisma/client"
 
 interface ConcertCardProps {
-  concert: Concert
+  concert: Recitales
 }
 
 export function ConcertCard({ concert }: ConcertCardProps) {
   return (
     <Card className="overflow-hidden">
       <div className="relative h-48 w-full">
-        <Image src={concert.image || "/placeholder.svg"} alt={concert.name} fill className="object-cover" priority />
+        <Image src={"/placeholder.svg"} alt={concert.descripcion} fill className="object-cover" priority />
       </div>
       <CardHeader>
-        <h3 className="text-xl font-bold">{concert.name}</h3>
+        <h3 className="text-xl font-bold">{concert.descripcion}</h3>
         <div className="flex items-center text-sm text-muted-foreground">
           <Calendar className="mr-1 h-4 w-4" />
-          {formatDate(concert.date)}
+          {formatDate(concert.fechaYHora.toLocaleDateString())}
         </div>
         <div className="flex items-center text-sm text-muted-foreground">
           <MapPin className="mr-1 h-4 w-4" />
-          {concert.location}
+          {concert.ubicacion}
         </div>
       </CardHeader>
       <CardContent>
-        <p className="line-clamp-2 text-sm text-muted-foreground">{concert.description}</p>
+        <p className="line-clamp-2 text-sm text-muted-foreground">{concert.descripcion}</p>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <div className="font-bold">${concert.price.toFixed(2)}</div>
+        <div className="font-bold">${concert.precioDeEntrada.toFixed(2)}</div>
         <Button asChild>
           <Link href={`/concerts/${concert.id}`}>Ver detalles</Link>
         </Button>

@@ -3,9 +3,10 @@ import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ConcertCard } from "@/components/concert-card"
-import { concerts } from "@/lib/data"
+import { obetnerTodosLosRecitales } from "@/lib/data"
 
-export default function Home() {
+ export default async function Home() {
+  const concerts = await obetnerTodosLosRecitales()
   return (
     <div className="container mx-auto px-4 py-12">
       <section className="mb-12 text-center">
