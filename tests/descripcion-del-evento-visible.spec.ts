@@ -1,6 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('test', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
-  await expect(page.getByText('El festival de rock más')).toBeVisible();
+test("test", async ({ page }) => {
+  await page.goto("http://localhost:3000/");
+  await expect(
+    page.getByText("Kreator + Sepultura - Latin America Attack 2025")
+  ).toBeVisible();
 });
